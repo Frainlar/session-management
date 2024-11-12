@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant User
+    participant AngularApp as Angular App
+    participant Backend as Backend Server
+    participant Redis
+
+    User ->> AngularApp: Login Form
+    AngularApp ->> Backend: POST /login
+    Backend ->> Redis: Validate
+    Redis -->> Backend: User Data
+    Backend -->> AngularApp: Session Cookie, JWT
+    Backend ->> Redis: Store Session
+
+    User ->> Backend: Authenticated Requests using JWT and Cookie
+    Backend ->> Redis: Validate Session, JWT
+    Redis -->> Backend: Response
+    Backend -->> AngularApp: Response
+    AngularApp -->> User: Response
+
+    User ->> AngularApp: Logout
+    AngularApp ->> Backend: POST /logout
+    Backend ->> Redis: Destroy Session
+    AngularApp -->> User: Session Cookie Cleared
