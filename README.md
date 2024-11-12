@@ -46,6 +46,7 @@ This project is a Node.js Express application implementing secure session and to
   - jwtUtil.js
   - redisClient.js
 - package.json
+```
 
 ## Prerequisites
 - Node.js (v14 or later)
