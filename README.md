@@ -1,26 +1,5 @@
 # Secure Session and Token Management in Node.js Express
 
-User               Angular App            Backend Server            Redis
-----               -----------            --------------            -----
- |                     |                        |                    |
- |---Login Form------->|                        |                    |
- |                     |---POST /login--------->|                    |
- |                     |                        |---Validate-------->|
- |                     |                        |<--User Data--------|
- |                     |<--Session Cookie, JWT--|                    |
- |                     |                        |---Store Session--->|
- |                     |                        |                    |
- |---Authenticated Requests using JWT and Cookie--->|                |
- |                     |                        |---Validate Session, JWT|
- |                     |                        |<--Response---------|
- |                     |<--Response-------------|                    |
- |                     |                        |                    |
- |---Logout----------->|---POST /logout-------->|                    |
- |                     |                        |---Destroy Session->|
- |                     |<--Session Cookie Cleared|                    |
- |                     |                        |                    |
-
-
 ## Features
 ### Session Creation and Management
 - Unique session IDs stored in Redis with associated user data.
