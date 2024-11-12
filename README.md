@@ -1,6 +1,25 @@
 # Secure Session and Token Management in Node.js Express
 
-This project is a Node.js Express application implementing secure session and token management, adhering to Clean Code principles and Domain-Driven Design (DDD). It leverages Redis (Amazon MemoryDB) for session storage, JWT for token-based authentication, and includes various security measures like CSRF protection, rate limiting, and HTTPS enforcement.
+User               Angular App            Backend Server            Redis
+----               -----------            --------------            -----
+ |                     |                        |                    |
+ |---Login Form------->|                        |                    |
+ |                     |---POST /login--------->|                    |
+ |                     |                        |---Validate-------->|
+ |                     |                        |<--User Data--------|
+ |                     |<--Session Cookie, JWT--|                    |
+ |                     |                        |---Store Session--->|
+ |                     |                        |                    |
+ |---Authenticated Requests using JWT and Cookie--->|                |
+ |                     |                        |---Validate Session, JWT|
+ |                     |                        |<--Response---------|
+ |                     |<--Response-------------|                    |
+ |                     |                        |                    |
+ |---Logout----------->|---POST /logout-------->|                    |
+ |                     |                        |---Destroy Session->|
+ |                     |<--Session Cookie Cleared|                    |
+ |                     |                        |                    |
+
 
 ## Features
 ### Session Creation and Management
